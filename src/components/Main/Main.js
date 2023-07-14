@@ -12,7 +12,7 @@ function Main({ weatherTemp, onSelectCard }) {
     } else if (weatherTemp <= 65) {
       return "cold";
     }
-  }, [{ weatherTemp }]);
+  }, [weatherTemp]);
 
   console.log(weatherType);
 
