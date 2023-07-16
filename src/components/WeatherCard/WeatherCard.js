@@ -23,7 +23,6 @@ const weatherOptions = [
 ];
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
-  console.log("weather card");
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
