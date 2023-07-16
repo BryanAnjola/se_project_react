@@ -1,19 +1,107 @@
-.modal{
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__content{
-    background-color: white;
-    max-width: 496px;
-    width: 100%;
-    border-radius: 20px;
-    padding: 34px 36px;
+.modal__content {
+  background-color: white;
+  max-width: 496px;
+  height: 436px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 34px 36px;
+}
+.modal__content-form {
+  height: 436px;
+  padding: 34px 36px;
+}
+.modal__closeBtn {
+  height: 20px;
+  width: 20px;
+  background-image: url("../images/Closebtn.svg");
+  position: absolute;
+  top: 245px;
+  left: 1175px;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+.modal__closeBtn:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.input__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.label__input {
+  width: 440px;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+.input__label {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+.form__input {
+  border: none;
+  border-bottom: 1px solid #000000;
+  margin-top: 10px;
+  padding-bottom: 8px;
+  width: 100%;
+}
+.form__input::placeholder {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.radio__input {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+.radio__label::before {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 8px;
+}
+
+.add__garmentBtn {
+  color: white;
+  margin-top: 32px;
+  margin-bottom: 36px;
+  width: 124px;
+  height: 36px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.add__garmentBtn:hover {
+  background: rgba(0, 0, 0, 0.6);
 }

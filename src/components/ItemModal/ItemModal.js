@@ -1,3 +1,4 @@
+import "../ModalWithForm/ModalWithForm.css";
 const ItemModal = ({ selectedCard, onclose }) => {
   console.log("item modal");
   return (
