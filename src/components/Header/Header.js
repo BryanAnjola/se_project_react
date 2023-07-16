@@ -1,22 +1,25 @@
 import "./Header.css";
 
 const Header = ({ onCreateModal }) => {
-  console.log("Header");
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
   return (
     <header className="header">
       <div className="header__logo">
         <div>
           <img src={require("../images/Logo.svg").default} alt="logo" />
         </div>
-        <div></div>
+        <div>{currentDate}</div>
       </div>
       <div className="header___avatar-logo">
         <div>
-          <button type="text" onClick={onCreateModal}>
-            + Add New Clothes
+          <button className="nav__button" type="text" onClick={onCreateModal}>
+            + Add Clothes
           </button>
         </div>
-        <div>Bryan Anjola</div>
+        <div className="nav__name">Bryan Anjola</div>
         <div>
           {" "}
           <img src={require("../images/avatar.svg").default} alt="avatar" />

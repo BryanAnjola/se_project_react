@@ -1,4 +1,10 @@
-
-.main{
-    padding: 0 20px;
+.main {
+  padding: 0 20px;
+}
+.weather__suggest {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  margin-left: 30px;
 }

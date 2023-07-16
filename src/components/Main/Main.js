@@ -1,3 +1,4 @@
+import "./Main.css";
 import defaultClothingItems from "../../util/constants";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
@@ -25,7 +26,9 @@ function Main({ weatherTemp, onSelectCard }) {
     <main className="main">
       <WeatherCard day={false} type="cloudy" weatherTemp={weatherTemp} />
       <section className="card__section" id="card-section">
-        Today is {weatherTemp} F / You may want to wear:
+        <span className="weather__suggest">
+          Today is {weatherTemp} °F / You may want to wear:
+        </span>
         <div className="card__items">
           {filteredCards.map((x) => (
             <ItemCard x={x} onSelectCard={onSelectCard} />

@@ -3,8 +3,8 @@ const Footer = () => {
   console.log("footer");
   return (
     <footer className="footer">
-      <div>Developed by TripleTen Students</div>
-      <div>2023</div>
+      <div className="footer__name">Developed by TripleTen Students</div>
+      <div className="footer__date">2023</div>
     </footer>
   );
 };

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "public/fonts/vendor/CabinetGrotesk-Regular.woff";
+}
 .card__section {
   margin-top: 20px;
 }
@@ -15,4 +19,5 @@
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+  padding-bottom: 110px;
 }
