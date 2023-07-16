@@ -37,7 +37,7 @@
 }
 
 .modal__closeBtn {
-  background-image: url("../images/Closebtn.svg");
+  background-image: url("../../images/Closebtn.svg");
   background-repeat: no-repeat;
   background-position: center;
   height: 20px;
