@@ -2,6 +2,11 @@
   font-family: "Cabinet Grotesk";
   src: "public/fonts/vendor/CabinetGrotesk-Regular.woff";
 }
+.main {
+  max-width: 1100px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
 .card__section {
   margin-top: 20px;
 }
@@ -20,4 +25,11 @@
   justify-content: center;
   margin-top: 20px;
   padding-bottom: 110px;
+}
+.weather__suggest {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  margin-left: 30px;
 }

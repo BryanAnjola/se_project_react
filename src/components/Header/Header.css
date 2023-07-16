@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "public/fonts/vendor/CabinetGrotesk-Regular.woff";
+}
 .header {
   display: flex;
   justify-content: space-between;

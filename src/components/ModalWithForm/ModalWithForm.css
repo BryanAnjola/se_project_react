@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "public/fonts/vendor/CabinetGrotesk-Regular.woff";
+}
 .modal {
   position: fixed;
   top: 0;
@@ -53,6 +57,9 @@
   font-weight: 700;
   line-height: 20px;
 }
+.label__input-weather {
+  margin-top: 0;
+}
 .input__label {
   font-family: "Cabinet Grotesk";
   font-style: normal;
@@ -63,8 +70,10 @@
   padding: 0;
 }
 .form__input {
+  font-family: "Cabinet Grotesk";
   border: none;
   border-bottom: 1px solid #000000;
+  color: rgba(0, 0, 0, 0.5);
   margin-top: 10px;
   padding-bottom: 8px;
   width: 100%;
@@ -90,15 +99,20 @@
   margin-top: 10px;
   margin-left: 8px;
 }
+.radio__label:checked {
+  background-color: black;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
 
 .add__garmentBtn {
+  background-color: black;
   color: white;
-  margin-top: 32px;
-  margin-bottom: 36px;
-  width: 124px;
-  height: 36px;
-  background: #000000;
-  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px 16px;
+  width: fit-content;
+  margin-top: 10px;
 }
 
 .add__garmentBtn:hover {
