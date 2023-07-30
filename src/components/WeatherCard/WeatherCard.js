@@ -1,5 +1,5 @@
 import "./WeatherCard.css";
-import { currentTemperatureUnitContext } from "../../contexts/CurrentTempetureUnit";
+import { currentTemperatureUnitContext } from "../../contexts/CurrentTempetureUnitContext";
 import { useContext } from "react";
 const weatherOptions = [
   {
