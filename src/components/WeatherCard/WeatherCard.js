@@ -1,4 +1,6 @@
 import "./WeatherCard.css";
+import { currentTemperatureUnitContext } from "../../Contexts/CurrentTempetureUnit";
+import { useContext } from "react";
 const weatherOptions = [
   {
     url: require("../../images/day/sunny.svg").default,
@@ -28,10 +30,16 @@ const WeatherCard = ({ day, type, weatherTemp }) => {
   });
 
   const imageSrcUrl = imageSrc[0].url || "";
+  const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
+  const temp = weatherTemp?.[currentTemperatureUnit];
   return (
     <section className="weather" id="weather">
-      <div className="weather__info">{weatherTemp} °F</div>
-      <img src={imageSrcUrl} className="weather__image" />
+      <div className="weather__info">
+        {temp}°{currentTemperatureUnit}
+      </div>
+      <div>
+        <img src={imageSrcUrl} className="weather__image" />
+      </div>
     </section>
   );
 };
