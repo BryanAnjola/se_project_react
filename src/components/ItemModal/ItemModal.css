@@ -68,3 +68,25 @@
   font-weight: 700;
   line-height: 24px;
 }
+
+.modal__delete {
+  color: #ff4d00;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  border: none;
+  background-color: white;
+  display: flex;
+  align-self: flex-end;
+  padding-bottom: 32px;
+  display: grid;
+  justify-content: flex-end;
+  grid-area: b;
+  padding-right: 20px;
+}
+
+.modal__delete:hover {
+  cursor: pointer;
+}

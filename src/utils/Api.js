@@ -1,5 +1,5 @@
 const baseUrl =
-  "hhttps://my-json-server.typicode.com/BryanAnjola/se_project_react";
+  "https://my-json-server.typicode.com/BryanAnjola/se_project_react";
 
 export const checkResponse = (res) => {
   if (res.ok) {
