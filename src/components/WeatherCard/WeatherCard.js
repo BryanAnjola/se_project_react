@@ -1,28 +1,7 @@
 import "./WeatherCard.css";
+import { weatherOptions } from "../../utils/constants";
 import { currentTemperatureUnitContext } from "../../contexts/CurrentTempetureUnitContext";
 import { useContext } from "react";
-const weatherOptions = [
-  {
-    url: require("../../images/day/sunny.svg").default,
-    day: true,
-    type: "sunny",
-  },
-  {
-    url: require("../../images/day/cloudy.svg").default,
-    day: true,
-    type: "cloudy",
-  },
-  {
-    url: require("../../images/night/cloudy.svg").default,
-    day: false,
-    type: "cloudy",
-  },
-  {
-    url: require("../../images/night/sunny.svg").default,
-    day: false,
-    type: "sunny",
-  },
-];
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
   const imageSrc = weatherOptions.filter((i) => {
