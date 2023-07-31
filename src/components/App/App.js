@@ -27,6 +27,9 @@ function App() {
   const [sunset, setSunset] = useState(null);
 
   const dateNow = Date.now() * 0.001;
+  const closeModal = () => {
+    setActiveModal("");
+  };
 
   const timeOfDay = () => {
     if (dateNow >= sunrise && dateNow < sunset) {
@@ -50,7 +53,7 @@ function App() {
     postItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
-        handleCloseModal();
+        closeModal();
       })
       .catch((error) => {
         console.error(error.status);
@@ -63,7 +66,7 @@ function App() {
   useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape") {
-        handleCloseModal();
+        closeModal();
       }
     };
     window.addEventListener("keydown", handleEscClose);
@@ -73,8 +76,10 @@ function App() {
     };
   }, []);
 
-  const handleCloseModal = () => {
-    setActiveModal("");
+  const handleCloseModal = (e) => {
+    if (e.target === e.currentTarget) {
+      setActiveModal("");
+    }
   };
 
   const handleSelectedCard = (card) => {
@@ -111,14 +116,6 @@ function App() {
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
-        const locationName = data.name;
-        setLocation(locationName);
-        const weatherType = data.temperature[0].main;
-        setWeathType(weatherType.toLowerCase());
-        const sunriseData = data.sys.sunrise;
-        setSunrise(sunriseData);
-        const sunsetData = data.sys.sunset;
-        setSunset(sunsetData);
       })
       .catch((err) => {
         console.error(err);
@@ -149,12 +146,11 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-        {activeModal === "open" && (
-          <ItemModal
+        {activeModal === "create" && (
+          <AddItemModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "open"}
+            isOpen={activeModal === "create"}
             onAddItem={onAddItem}
-            handleOpenConfirm={handleOpenConfirmationModal}
           />
         )}
         {activeModal === "confirmation-opened" && (
@@ -166,9 +162,9 @@ function App() {
         )}
         {activeModal === "preview" && (
           <ItemModal
+            onClose={handleCloseModal}
             selectedCard={selectedCard}
-            onclose={handleCloseModal}
-            handleDeleteCard={handleDeleteCard}
+            handleOpenConfirm={handleOpenConfirmationModal}
           />
         )}
       </currentTemperatureUnitContext.Provider>
