@@ -63,19 +63,6 @@ function App() {
   const handleCreateModal = () => {
     setActiveModal("create");
   };
-  useEffect(() => {
-    const handleEscClose = (evt) => {
-      if (evt.key === "Escape") {
-        closeModal();
-      }
-    };
-    window.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      window.removeEventListener("keydown", handleEscClose);
-    };
-  }, []);
-
   const handleCloseModal = (e) => {
     if (e.target === e.currentTarget) {
       setActiveModal("");
@@ -110,7 +97,18 @@ function App() {
         console.log(err);
       });
   };
-
+  useEffect(() => {
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleEscClose);
+    console.log(handleEscClose);
+    return () => {
+      window.removeEventListener("keydown", handleEscClose);
+    };
+  }, []);
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
