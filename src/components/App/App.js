@@ -12,6 +12,7 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom";
 import { deleteItems, getItems, postItems } from "../../utils/Api";
+import * as Api from "../../utils/Api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
@@ -32,11 +33,7 @@ function App() {
   };
 
   const timeOfDay = () => {
-    if (dateNow >= sunrise && dateNow < sunset) {
-      return true;
-    } else {
-      return false;
-    }
+    return dateNow >= sunrise && dateNow < sunset;
   };
 
   useEffect(() => {
@@ -44,29 +41,25 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
+      .catch((error) => {});
+  }, []);
+
+  const onAddItem = ({ name, link, weatherType, id }) => {
+    const item = { name, imageUrl: link, weather: weatherType, id: 99 };
+    Api.addItems(item)
+      .then((res) => {
+        setClothingItems([item, ...clothingItems]);
+        handleCloseModal();
+      })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
-  const onAddItem = (values) => {
-    postItems(values)
-      .then((data) => {
-        setClothingItems([data, ...clothingItems]);
-        closeModal();
-      })
-      .catch((error) => {
-        console.error(error.status);
-      });
   };
-
   const handleCreateModal = () => {
     setActiveModal("create");
   };
-  const handleCloseModal = (e) => {
-    if (e.target === e.currentTarget) {
-      setActiveModal("");
-    }
+  const handleCloseModal = () => {
+    setActiveModal("");
   };
 
   const handleSelectedCard = (card) => {
@@ -79,17 +72,14 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "C" ? "F" : "C");
   };
   const handleDeleteCard = (cardElement) => {
-    console.log(cardElement);
     deleteItems(cardElement)
       .then(() => {
         const newClothesList = clothingItems.filter((cards) => {
           return cards.id !== cardElement;
         });
-        console.log(newClothesList);
         setClothingItems(newClothesList);
         handleCloseModal();
       })
@@ -103,10 +93,9 @@ function App() {
         closeModal();
       }
     };
-    window.addEventListener("keydown", handleEscClose);
-    console.log(handleEscClose);
+    document.addEventListener("keydown", handleEscClose);
     return () => {
-      window.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("keydown", handleEscClose);
     };
   }, []);
   useEffect(() => {
@@ -133,6 +122,7 @@ function App() {
               onSelectCard={handleSelectedCard}
               timeOfDay={timeOfDay()}
               clothingItems={clothingItems}
+              onClose={closeModal}
             />
           </Route>
           <Route path="/profile">

@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
   const [link, setUrl] = useState("");
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
   const [weather, setWeatherType] = useState("");
   const handleWeatherType = (e) => {
-    console.log(e.target.value);
     setWeatherType(e.target.value);
   };
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setWeatherType("");
+      setUrl("");
+    }
+  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +28,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   };
   return (
     <ModalWithForm
+      buttonText="Add garment"
       title="New Garment"
-      onclose={handleCloseModal}
+      onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
@@ -50,7 +55,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             type="url"
             link="link"
             minLength="1"
-            maxLength="30"
+            maxLength="300"
             placeholder="Image URL"
             value={link}
             onChange={handleUrlChange}
@@ -66,7 +71,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             <input
               className="radio__input"
               type="radio"
-              id="hot"
+              id="radio-input"
               value="hot"
               onChange={handleWeatherType}
             />
@@ -76,7 +81,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             <input
               className="radio__input"
               type="radio"
-              id="warm"
+              id="radio-input"
               value="warm"
               onChange={handleWeatherType}
             />
@@ -86,7 +91,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             <input
               className="radio__input"
               type="radio"
-              id="cold"
+              id="radio-input"
               value="cold"
               onChange={handleWeatherType}
             />

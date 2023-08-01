@@ -6,7 +6,6 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 75;
   const weatherType = () => {
     if (currentTemperatureUnit === "C") {
@@ -28,8 +27,8 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
     }
   };
 
-  const filteredCards = clothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherType();
+  const filteredCards = clothingItems?.filter((item) => {
+    return item.weather.toLowerCase() === weatherType;
   });
   return (
     <main className="main">
@@ -40,11 +39,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
         </span>
         <div className="card__items">
           {filteredCards.map((item) => (
-            <ItemCard
-              item={item}
-              onSelectCard={onSelectCard}
-              key={item?._id || item?.id}
-            />
+            <ItemCard item={item} onSelectCard={onSelectCard} key={item?._id} />
           ))}
         </div>
       </section>

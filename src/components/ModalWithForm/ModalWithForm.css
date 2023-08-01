@@ -113,6 +113,7 @@
   padding: 8px 16px;
   width: fit-content;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .add__garmentBtn:hover {
