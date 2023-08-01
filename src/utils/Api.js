@@ -1,10 +1,3 @@
-export const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
-
 const baseUrl =
   "https://my-json-server.typicode.com/BryanAnjola/se_project_react";
 
@@ -27,7 +20,7 @@ export function getItems() {
 }
 
 // POST Items
-export function addItems({ name, link, weather }) {
+export function addItem({ name, link, weather }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -42,7 +35,7 @@ export function addItems({ name, link, weather }) {
 }
 
 // DELETE Items
-export function deleteItems(id) {
+export function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {

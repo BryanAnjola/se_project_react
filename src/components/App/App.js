@@ -11,8 +11,8 @@ import { useEffect, useState } from "react";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom";
-import { deleteItems, getItems, postItems } from "../../utils/Api";
-import * as Api from "../../utils/Api";
+import { deleteItem, getItems, postItems } from "../../utils/Api";
+import * as api from "../../utils/Api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
@@ -41,12 +41,15 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-  const onAddItem = ({ name, link, weatherType, id }) => {
-    const item = { name, imageUrl: link, weather: weatherType, id: 99 };
-    Api.addItems(item)
+  const onAddItem = ({ name, link, weatherType, values }) => {
+    const item = { name, imageUrl: link, weather: weatherType, values };
+    api
+      .addItem(item)
       .then((res) => {
         setClothingItems([item, ...clothingItems]);
         handleCloseModal();
@@ -75,7 +78,7 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "C" ? "F" : "C");
   };
   const handleDeleteCard = (cardElement) => {
-    deleteItems(cardElement)
+    deleteItem(cardElement)
       .then(() => {
         const newClothesList = clothingItems.filter((cards) => {
           return cards.id !== cardElement;
@@ -159,5 +162,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
