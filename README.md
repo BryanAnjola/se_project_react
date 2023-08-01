@@ -1,3 +1,7 @@
+Sprint 11 React Project
+
+A weather disclosure page that will show you the weather for today and reccomend certain clothhes to fit the weather.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
