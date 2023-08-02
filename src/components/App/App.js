@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom";
-import { deleteItem, getItems, postItems } from "../../utils/Api";
+import { deleteItem, getItems, addItem } from "../../utils/Api";
 import * as api from "../../utils/Api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
@@ -46,23 +46,18 @@ function App() {
       });
   }, []);
 
-  const onAddItem = ({ name, link, weatherType, id }) => {
-    const item = {
-      name,
-      imageUrl: link,
-      weather: weatherType,
-      id: { onAddItem },
-    };
-    api
-      .addItem(item)
-      .then((res) => {
-        setClothingItems([item, ...clothingItems]);
+  const onAddItem = (values) => {
+    console.log(values);
+    addItem(values)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.status);
       });
   };
+
   const handleCreateModal = () => {
     setActiveModal("create");
   };
