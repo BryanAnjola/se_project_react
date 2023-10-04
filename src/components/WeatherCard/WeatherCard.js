@@ -1,33 +1,29 @@
 import "./WeatherCard.css";
-const weatherOptions = [
-  { url: require("../images/day/sunny.svg").default, day: true, type: "sunny" },
-  {
-    url: require("../images/day/cloudy.svg").default,
-    day: true,
-    type: "cloudy",
-  },
-  {
-    url: require("../images/night/cloudy.svg").default,
-    day: false,
-    type: "cloudy",
-  },
-  {
-    url: require("../images/night/sunny.svg").default,
-    day: false,
-    type: "sunny",
-  },
-];
+import { weatherOptions } from "../../utils/constants";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { useContext } from "react";
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
+<<<<<<< HEAD
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
+=======
+  const weatherOption = weatherOptions.find((item) => {
+    return item.day === day && item.type === type;
+>>>>>>> refs/remotes/origin/Project-10
   });
 
-  const imageSrcUrl = imageSrc[0].url || "";
+  const imageSrcUrl = weatherOption.url || "";
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const temp = weatherTemp?.[currentTemperatureUnit];
   return (
     <section className="weather" id="weather">
-      <div className="weather__info">{weatherTemp} °F</div>
-      <img src={imageSrcUrl} className="weather__image" />
+      <div className="weather__info">
+        {weatherTemp}°{currentTemperatureUnit}
+      </div>
+      <div>
+        <img src={imageSrcUrl} className="weather__image" alt="weatherimage" />
+      </div>
     </section>
   );
 };

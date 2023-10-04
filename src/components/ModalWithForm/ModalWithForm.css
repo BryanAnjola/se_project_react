@@ -28,7 +28,7 @@
 .modal__closeBtn {
   height: 20px;
   width: 20px;
-  background-image: url("../images/Closebtn.svg");
+  background-image: url("../../images/Closebtn.svg");
   position: absolute;
   top: 245px;
   left: 1175px;
@@ -113,6 +113,7 @@
   padding: 8px 16px;
   width: fit-content;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .add__garmentBtn:hover {

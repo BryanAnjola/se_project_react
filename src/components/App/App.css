@@ -17,6 +17,7 @@
   width: 328px;
   height: 328px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .card__items {
   display: flex;

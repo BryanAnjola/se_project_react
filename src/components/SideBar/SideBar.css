@@ -1,0 +1,22 @@
+.sideBar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 23px;
+  max-width: 120px;
+}
+
+.sideBar__avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.sideBar__name {
+  color: #000;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  min-width: 135px;
+}
