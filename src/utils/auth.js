@@ -28,7 +28,7 @@ export const signIn = (email, password) => {
 // };
 //Registering
 
-export const checkToken = (token) => {
+export const checkToken = ({ token }) => {
   const url = `${baseUrl}/users/me`;
   console.log("URL:", url);
   console.log("Token:", token);
