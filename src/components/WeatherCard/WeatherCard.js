@@ -4,13 +4,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { useContext } from "react";
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
-<<<<<<< HEAD
-  const imageSrc = weatherOptions.filter((i) => {
-    return i.day === day && i.type === type;
-=======
   const weatherOption = weatherOptions.find((item) => {
     return item.day === day && item.type === type;
->>>>>>> refs/remotes/origin/Project-10
   });
 
   const imageSrcUrl = weatherOption.url || "";

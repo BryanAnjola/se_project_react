@@ -161,7 +161,7 @@ function App() {
               console.log(res);
               setCurrentUser(res);
               handleCloseModal();
-              setLoggedIn();
+              setLoggedIn(true);
               setRedirectToProfile(true);
             })
             .catch((error) => {
