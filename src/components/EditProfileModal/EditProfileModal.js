@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./EditProfileModal.css";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ handleCloseModal, isOpen }, currentUser) => {
+const EditProfileModal = ({ handleCloseModal, isOpen }) => {
+  const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.avatar);
 
   const handleNameChange = (e) => {
-    console.log(e.target.value);
+    setName(e.target.value);
   };
   const handleUrlChange = (e) => {
     console.log(e.target.value);
@@ -19,6 +19,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen }, currentUser) => {
     handleNameChange();
     handleUrlChange();
   };
+
   return (
     <ModalWithForm
       onClose={handleCloseModal}
@@ -26,12 +27,13 @@ const EditProfileModal = ({ handleCloseModal, isOpen }, currentUser) => {
       onSubmit={handleSubmit}
     >
       <h2>Sign up</h2>
-      <label className="modal__input-name">
+      <label className="modal__label">
         Name
         <input
+          className="modal__input-name"
           type="text"
           name="name"
-          placeholder="name"
+          placeholder="Name"
           minLength="1"
           maxLength="30"
           value={name}
@@ -39,7 +41,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen }, currentUser) => {
         ></input>
       </label>
       <label className="modal__label">
-        avatar
+        Avatar
         <input
           className="modal__input-link"
           type="url"
@@ -62,4 +64,5 @@ const EditProfileModal = ({ handleCloseModal, isOpen }, currentUser) => {
     </ModalWithForm>
   );
 };
+
 export default EditProfileModal;

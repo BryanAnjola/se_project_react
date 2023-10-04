@@ -1,26 +1,22 @@
-.sidebar {
-  font-family: "Familjen Grotesk", sans-serif;
-  font-style: normal;
+.sideBar {
   display: flex;
-  margin: 0 0 0px 40px;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 23px;
+  max-width: 120px;
+}
+
+.sideBar__avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.sideBar__name {
   color: #000;
+  font-family: Cabinet Grotesk;
   font-size: 20px;
+  font-style: normal;
   font-weight: 700;
-  height: 40px;
-  gap: 16px;
-}
-
-.sidebar__avatar-picture {
-  border-radius: 50%;
-  background-color: #000;
-}
-
-.sidebar__avatar-name {
-  display: flex;
-  align-self: center;
-  margin: 0;
-  padding: 0;
-  min-width: 157px;
-  width: 100%;
+  line-height: normal;
+  min-width: 135px;
 }

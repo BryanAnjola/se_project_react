@@ -18,17 +18,29 @@ export const fetchItems = () => {
   return getItems;
 };
 // POST Items
-export function addItem({ name, link, weather }) {
+export function addItem({ name, imageUrl, weather }) {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
-      link,
+      imageUrl,
       weather,
     }),
+  }).then(checkResponse);
+}
+export function editUserProfile({ name, avatar }) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
 }
 

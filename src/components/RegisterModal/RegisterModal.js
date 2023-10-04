@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth";
 
-const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
+const RegisterModal = ({
+  handleCloseModal,
+  isOpen,
+  onClickLogin,
+  setActiveModal,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -29,8 +35,9 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
     register(email, password, name, avatar);
     handleCloseModal();
   };
-  const onClickLogin = () => {
+  const handleLogin = () => {
     setActiveModal("login");
+    return <Redirect to="/login" />;
   };
   return (
     <ModalWithForm
@@ -38,7 +45,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <h2 className="modal_header">Sign up</h2>
+      <h2>Sign up</h2>
       <label className="modal__label">
         Email*
         <input
@@ -91,7 +98,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
           onChange={handleUrlChange}
         ></input>
       </label>
-      <div className="modal__button-container">
+      <div className="button-container">
         <button
           className="modal__submit-button"
           type="submit"
@@ -101,12 +108,13 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
           Next
         </button>
         <button
-          className="modal__submit-login-button"
+          className="modal__form-button"
           type="button"
           name="button"
+          onChange={handleLogin}
           onClick={onClickLogin}
         >
-          or Login
+          or Log in
         </button>
       </div>
     </ModalWithForm>

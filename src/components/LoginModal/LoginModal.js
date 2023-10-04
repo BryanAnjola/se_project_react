@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
@@ -21,11 +22,15 @@ const LoginModal = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin({ email, password });
+    handleLogin(email, password);
     handleCloseModal();
   };
   const onClickSignup = () => {
     setActiveModal("signup");
+  };
+  const handleRegister = (e) => {
+    e.preventDefault();
+    return <Redirect to="/signup" />;
   };
   return (
     <ModalWithForm
@@ -35,7 +40,7 @@ const LoginModal = ({
     >
       <h2>Log in</h2>
       <label className="modal__label">
-        email
+        Email
         <input
           className="modal__email"
           type="email"
@@ -52,7 +57,7 @@ const LoginModal = ({
           className="modal__password"
           type="text"
           name="password"
-          placeholder="PassWord"
+          placeholder="Password"
           minLength="1"
           maxLength="8"
           required="true"
@@ -73,6 +78,7 @@ const LoginModal = ({
           className="modal__submit-register-button"
           type="button"
           name="button"
+          onChange={handleRegister}
           onClick={onClickSignup}
         >
           or Register
