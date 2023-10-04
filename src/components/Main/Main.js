@@ -1,3 +1,4 @@
+import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
@@ -26,7 +27,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
     }
   };
   const weatherType = getWeatherType();
-  const filteredCards = clothingItems.filter((item) => {
+  const filteredCards = clothingItems?.filter((item) => {
     return item.weather === weatherType;
   });
   return (
