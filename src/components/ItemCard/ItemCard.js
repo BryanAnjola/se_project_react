@@ -1,43 +1,45 @@
-import { React, useContext } from "react";
-import "./itemCard.css";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import './ItemCard.css';
 
-const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
-  const currentUser = useContext(CurrentUserContext);
-  const cardId = item._id;
-  console.log({ item });
-  const userId = currentUser ? currentUser._id : "";
-  const isLiked = item.likes.some((id) => id === currentUser?._id);
-  const likeButtonClass = isLiked
-    ? "card__like-button"
-    : "card__like-button card__like-button-inactive";
+const ItemCard = ({ data, onSelectCard, onCardLike, isLoggedIn }) => {
+  const { currentUser } = useContext(CurrentUserContext);
 
-  const handleLikeClick = () => {
-    onCardLike({ _id: cardId, isLiked: isLiked, user: userId });
-    console.log(cardId, isLiked, userId);
+  const isLiked = data.likes.some((likes) => likes === currentUser._id);
+
+  const itemLikeButtonClassname = () => {
+    return isLiked
+      ? 'clothing__card-like-button-active'
+      : 'clothing__card-like-button-inactive';
   };
 
   return (
-    <div className="card">
-      <div className="card_info">
-        <span className="card_name">{item.name}</span>
-        {isLoggedIn ? (
-          <button
-            className={likeButtonClass}
-            type="button"
-            onClick={handleLikeClick}
-          />
-        ) : (
-          <button className="card__like-button-hidden" />
-        )}
+    <article className="clothing__cards-wrapper">
+      <div
+        className="clothing__card-items"
+        id={`clothing__card-items_${data.name}`}
+      >
+        <div className="clothing__card-title-wrapper">
+          <p className="clothing-card-title">{data.name}</p>
+          {isLoggedIn && (
+            <button
+              type="button"
+              className={itemLikeButtonClassname()}
+              onClick={() => {
+                onCardLike(data, isLiked);
+              }}
+            ></button>
+          )}
+        </div>
+        <img
+          className="clothing-card-individual"
+          id={`clothing-card-individual_${data.name}`}
+          alt={data.name}
+          src={data.imageUrl}
+          onClick={() => onSelectCard(data)}
+        />
       </div>
-      <img
-        src={item.imageUrl}
-        className="card_image"
-        alt={item.name}
-        onClick={() => onSelectCard(item)}
-      />
-    </div>
+    </article>
   );
 };
 

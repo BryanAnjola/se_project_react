@@ -1,51 +1,84 @@
 @font-face {
-  font-family: "Cabinet Grotesk";
-  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+  font-family: "Familjen Grotesk";
+  src: url(../../../public/vendors/fonts/FamiljenGrotesk-Regular.ttf);
 }
 
 .header {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
   display: flex;
+  margin: 32px 0 28px 0;
   justify-content: space-between;
-  align-items: center;
-  min-height: 60px;
-  padding: 0 40px;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.header__logo {
   color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  height: 40px;
 }
 
-.header__avatar-logo {
+.header__section {
   display: flex;
-  gap: 15px;
   align-items: center;
 }
 
-.sidebar__avatar-picture {
-  border-radius: 50%;
-  background-color: #000;
-  max-width: 40px;
-  max-height: 40px;
+/* -------------------------------------------------------------------------- */
+/*                             Left side of header                            */
+/* -------------------------------------------------------------------------- */
+.header__section-left {
+  gap: 24px;
 }
 
-.nav__button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
+/* -------------------------------------------------------------------------- */
+/*                            Right side of header                            */
+/* -------------------------------------------------------------------------- */
+.header__section-right {
+  gap: 12px;
+}
+
+.header__add-clothes-button {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
+  line-height: 20px;
+  color: #fff;
+  margin-right: 20px;
+  width: 124px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  background-color: #000;
 }
 
-.nav__button:hover {
-  opacity: 0.5;
+.header__add-clothes-button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.avatar__picture {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+
+  background-color: #000;
+}
+
+#avatar__picture-replacement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.avatar__sign-up {
+  background: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+.avatar__log-in {
+  background: none;
+  border-style: none;
+  cursor: pointer;
 }

@@ -1,34 +1,11 @@
-@font-face {
-  font-family: "Cabinet Grotesk";
-  src: "../public/vendor/CabinetGrotesk-Regular.woff";
-}
-
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.footer__name {
-  display: flex;
-  font-size: 20px;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 16px;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-style: normal;
   font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.footer__date {
-  display: flex;
-  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 16px;
-  font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
+  color: #000;
+  margin-top: 170px;
 }

@@ -1,54 +1,45 @@
-import { React, useContext, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import './SideBar.css';
 
-import "./SideBar.css";
-
-const SideBar = ({ onSignOut, onOpenEditProfileModal }) => {
-  const currentUser = useContext(CurrentUserContext);
-  const Avatar = currentUser ? currentUser.avatar : null;
-  const Name = currentUser ? currentUser.name : null;
-  const history = useHistory();
-
-  const signUserOut = () => {
-    onSignOut();
-    history.push("/");
-  };
-  const showAvatar = Avatar !== "" ? true : false;
-
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setIsEditModalOpen(false);
-  };
-
+const SideBar = ({ handleUserLogout, currentUser, openModal }) => {
   return (
     <div className="sidebar">
-      <div className="sidebar__container-info">
-        <img alt="Avatar" src={Avatar} className="sidebar__avatar-picture" />
-        <p className="sidebar__avatar-name">{Name}</p>
+      <div className="sidebar__avatar-wrapper">
+        {currentUser.avatar ? (
+          <img
+            alt="sidebar__avatar"
+            src={currentUser.avatar}
+            className="sidebar__avatar-picture"
+          />
+        ) : (
+          <div className="sidebar__avatar-picture">
+            <p id="avatar__picture-replacement">{currentUser.name[0]}</p>
+          </div>
+        )}
+
+        <p className="sidebar__avatar-name">
+          {currentUser ? currentUser.name : 'No Name'}
+        </p>
       </div>
-      <div className="sidebar__container-buttons">
+      <div className="sidebar__user-wrapper">
         <button
-          className="side__container-button"
+          className="sidebar__button sidebar__edit-profile"
           type="button"
-          onClick={onOpenEditProfileModal}
+          onClick={() => {
+            openModal('edit-profile-modal-opened');
+          }}
         >
-          Change profile data
+          Edit Profile
         </button>
         <button
-          className="side__container-button"
+          className="sidebar__button sidebar__logout"
           type="button"
-          onClick={signUserOut}
+          onClick={() => handleUserLogout()}
         >
-          Log out
+          Logout
         </button>
       </div>
     </div>
   );
 };
+
 export default SideBar;

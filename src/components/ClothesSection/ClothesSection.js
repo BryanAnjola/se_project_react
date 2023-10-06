@@ -1,15 +1,15 @@
-import ItemCard from "../ItemCard/ItemCard";
-import "./ClothesSection.css";
-import React from "react";
+import React from 'react';
+import ItemCard from '../ItemCard/ItemCard';
+import './ClothesSection.css';
 
-const ClothesSection = (
-  { onSelectCard, onCreateModal, clothingItems },
-  item,
-  currentUser
-) => {
-  const isOwn = item.owner?._id === currentUser?._id;
-  const parsedCards = clothingItems.filter((item) => item.weather);
-
+const ClothesSection = ({
+  onSelectCard,
+  openAddClothesModal,
+  clothingItems,
+  currentUser,
+  onCardLike,
+  isLoggedIn,
+}) => {
   return (
     <div className="clothes__section">
       <div className="clothes__section-title-wrapper">
@@ -17,21 +17,28 @@ const ClothesSection = (
         <button
           type="submit"
           className="clothes__section-button"
-          onClick={onCreateModal}
+          onClick={() => openAddClothesModal('new-clothes-modal')}
         >
           + Add new
         </button>
       </div>
       <div className="clothing__section-cards">
-        {isOwn
-          ? parsedCards.map((item) => (
-              <ItemCard
-                key={item._id} // Use item.id as the key
-                item={item}
-                onSelectCard={onSelectCard}
-              />
-            ))
-          : ""}
+        {clothingItems.map((data) => {
+          const isOwn = data.owner === currentUser?._id;
+
+          return (
+            <React.Fragment key={data._id}>
+              {isOwn && (
+                <ItemCard
+                  data={data}
+                  onSelectCard={onSelectCard}
+                  onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
+                />
+              )}
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );

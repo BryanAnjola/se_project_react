@@ -1,30 +1,28 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./weatherApi";
 
-export const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+const newBaseUrl = "http://localhost:3001";
+
+function getToken() {
+  return localStorage.getItem("jwt");
+}
 
 // GET Items
-export const fetchItems = () => {
-  const getItems = fetch(`${baseUrl}/items`, {
+export function getItems() {
+  return fetch(`${newBaseUrl}/items`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   }).then(checkResponse);
-  return getItems;
-};
+}
+
 // POST Items
-export function addItem({ name, imageUrl, weather }) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items`, {
+export function postItems({ name, weather, imageUrl }) {
+  return fetch(`${newBaseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       name,
@@ -33,23 +31,14 @@ export function addItem({ name, imageUrl, weather }) {
     }),
   }).then(checkResponse);
 }
-export function editUserProfile({ name, avatar }) {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    },
-    body: JSON.stringify({ name, avatar }),
-  }).then(checkResponse);
-}
 
 // DELETE Items
-export function deleteItem(id) {
-  return fetch(`${baseUrl}/items/${id}`, {
+export function deleteItems(id) {
+  return fetch(`${newBaseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
     },
   }).then(checkResponse);
 }

@@ -1,22 +1,56 @@
-.sideBar {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  padding-left: 23px;
-  max-width: 120px;
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url(../../../public/vendors/fonts/FamiljenGrotesk-Regular.ttf);
 }
 
-.sideBar__avatar {
+.sidebar {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 28px 0;
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  height: 40px;
+  gap: 16px;
+}
+
+.sidebar__avatar-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar__avatar-picture {
   width: 56px;
   height: 56px;
+  border-radius: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
 }
 
-.sideBar__name {
-  color: #000;
-  font-family: Cabinet Grotesk;
-  font-size: 20px;
+.sidebar__avatar-name {
+  display: flex;
+  align-self: center;
+  margin: 0;
+  width: 157px;
+}
+
+.sidebar__user-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__button {
+  font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
+  color: #000;
+  font-size: 20px;
   font-weight: 700;
-  line-height: normal;
-  min-width: 135px;
+  height: 40px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

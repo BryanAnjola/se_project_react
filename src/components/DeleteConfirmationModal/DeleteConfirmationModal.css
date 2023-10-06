@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url(../../../public/vendors/fonts/FamiljenGrotesk-Regular.ttf);
+}
+
 .delete__confirmation-modal {
   display: flex;
   justify-content: space-around;
@@ -18,7 +23,7 @@
 }
 
 .delete__confirmation-button_exit {
-  background-image: url(../../images/Closebtn.svg);
+  background-image: url(../../images/modalexit.svg);
   position: absolute;
   top: 20px;
   right: 28px;

@@ -1,10 +1,12 @@
 import "./Footer.css";
+
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer__name">Developed by TripleTen Students</div>
-      <div className="footer__date">2023</div>
+      <p className="footer__name">Bryan Anjola</p>
+      <p className="footer__year">2023</p>
     </footer>
   );
 };
+
 export default Footer;

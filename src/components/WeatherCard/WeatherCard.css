@@ -2,22 +2,20 @@
   position: relative;
 }
 
-.weather__info {
+.weather__temp {
   position: absolute;
-  top: 15px;
-  left: 10px;
-  color: white;
-  font-family: "Cabinet Grotesk", sans-serif;
+  font-family: 'Familjen Grotesk', sans-serif;
   font-size: 36px;
   font-weight: 700;
-  line-height: 25px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-top: 20px;
+  line-height: 40px;
+  color: #fff;
+  top: 20px;
+  left: 16px;
+  width: 69px;
+  text-align: center;
 }
+
 .weather__image {
   width: 100%;
   height: 80px;
-  margin-left: 5px;
-  padding-top: 10px;
 }

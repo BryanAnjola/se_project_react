@@ -1,25 +1,33 @@
-import "./ModalWithForm.css";
+import React from 'react';
+
 const ModalWithForm = ({
   children,
-  buttonText,
   title,
-  onClose,
   name,
+  buttonText,
+  buttonRedirectText,
+  redirect,
+  onClose,
   onSubmit,
+  isOpen,
 }) => {
   return (
-    <div className={`modal modal_type_${name}`}>
-      <div className="modal__content modal__content-form">
-        <button className="modal__closeBtn" type="button" onClick={onClose} />
-        <h3 className="modal__content-title">{title}</h3>
-        <form onSubmit={onSubmit}>
-          {children}
-          <button className="add__garmentBtn" type="submit">
+    <section className={`modal modal_type_${name}`} onClick={onClose}>
+      <div className="modal__container ">
+        <button className="modal__exit" type="button" onClick={onClose} />
+        <h2 className="modal__title">{title}</h2>
+        <form className="modal__form " id="" onSubmit={onSubmit}>
+          <fieldset className="modal__fieldset">{children}</fieldset>
+          <span className="modal__error"></span>
+          <button type="submit" className="modal__submit">
             {buttonText}
+          </button>
+          <button type="button" className="modal__redirect" onClick={redirect}>
+            {buttonRedirectText}
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

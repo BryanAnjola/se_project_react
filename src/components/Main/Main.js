@@ -1,47 +1,67 @@
-import "./Main.css";
-import WeatherCard from "../WeatherCard/WeatherCard";
-import ItemCard from "../ItemCard/ItemCard";
-import { useContext } from "react";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import React, { useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
+import './Main.css';
+import WeatherCard from '../WeatherCard/WeatherCard';
+import ItemCard from '../ItemCard/ItemCard';
 
-function Main({ weatherTemp, onSelectCard, clothingItems }) {
+function Main({
+  weatherTemp,
+  weatherType,
+  onSelectCard,
+  timeOfDay,
+  clothingItems,
+  onCardLike,
+  isLoggedIn,
+}) {
+  const { currentUser } = useContext(CurrentUserContext);
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 75;
-  const getWeatherType = () => {
-    if (currentTemperatureUnit === "C") {
-      if (temp >= 30) {
-        return "hot";
-      } else if (temp >= 19 && temp <= 29) {
-        return "warm";
-      } else if (temp <= 18) {
-        return "cold";
-      }
+
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const weatherFilter = () => {
+    if (temp >= 30 && currentTemperatureUnit === 'C') {
+      return 'hot';
+    } else if (temp >= 19 && temp <= 29) {
+      return 'warm';
+    } else if (temp <= 18) {
+      return 'cold';
     }
 
-    if (temp >= 86) {
-      return "hot";
+    if (temp >= 86 && currentTemperatureUnit === 'F') {
+      return 'hot';
     } else if (temp >= 66 && temp <= 85) {
-      return "warm";
+      return 'warm';
     } else if (temp <= 65) {
-      return "cold";
+      return 'cold';
     }
   };
-  const weatherType = getWeatherType();
-  const filteredCards = clothingItems?.filter((item) => {
-    return item.weather === weatherType;
+  const weatherTempFilter = weatherFilter();
+  const filterCards = clothingItems.filter((item) => {
+    return item.weather === weatherTempFilter;
   });
   return (
     <main className="main">
-      <WeatherCard day={true} type="sunny" weatherTemp={temp} />
-      <section className="card__section" id="card-section">
-        <span className="weather__suggest">
-          Today is {temp}°{currentTemperatureUnit} You may want to wear:{" "}
-        </span>
-        <div className="card__items">
-          {filteredCards.map((item) => (
-            <ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />
-          ))}
-        </div>
+      <WeatherCard
+        day={timeOfDay}
+        weatherType={weatherType}
+        weatherTemp={temp}
+      />
+      <div className="main__title">
+        Today is {temp}°{currentTemperatureUnit} / You may want to wear:
+      </div>
+      <section className="clothing">
+        {filterCards.map((data) => {
+          return (
+            <ItemCard
+              key={data?.id || data?._id}
+              data={data}
+              onSelectCard={onSelectCard}
+              onCardLike={onCardLike}
+              isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
+            />
+          );
+        })}
       </section>
     </main>
   );

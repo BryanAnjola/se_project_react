@@ -1,122 +1,95 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./RegisterModal.css";
-import { register } from "../../utils/auth";
 
-const RegisterModal = ({
-  handleCloseModal,
-  isOpen,
-  onClickLogin,
-  setActiveModal,
-}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setUrl] = useState("");
+const RegisterModal = ({ isOpen, onCloseModal, onRedirect, userRegister }) => {
+  const [inputValues, setInputValues] = useState({});
 
-  const handleEmailChange = (e) => {
-    console.log(e.target.value);
-    setEmail(e.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setInputValues({ ...inputValues, [name]: value });
   };
-  const handlePasswordChange = (e) => {
-    console.log(e.target.value);
-    setPassword(e.target.value);
-  };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleUrlChange = (e) => {
-    console.log(e.target.value);
-    setUrl(e.target.value);
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(email, password, name, avatar);
-    handleCloseModal();
+    userRegister(inputValues);
   };
-  const handleLogin = () => {
-    setActiveModal("login");
-    return <Redirect to="/login" />;
-  };
+  console.log(inputValues);
+
   return (
     <ModalWithForm
-      onClose={handleCloseModal}
-      isOpen={isOpen}
+      title="Sign Up"
+      name="register__user"
+      buttonText="Next"
+      buttonRedirectText="or Log in"
+      redirect={onRedirect}
+      onClose={onCloseModal}
       onSubmit={handleSubmit}
+      isOpen={isOpen}
     >
-      <h2>Sign up</h2>
-      <label className="modal__label">
-        Email*
+      {/* Email input */}
+      <div className="modal__input">
+        <label htmlFor="modal__input-email">Email*</label>
         <input
-          className="modal__email"
-          type="email"
+          id="modal__input-email"
+          className="modal__input-form"
           name="email"
+          type="email"
           placeholder="Email"
-          required
-          value={email}
-          onChange={handleEmailChange}
-        ></input>
-      </label>
-      <label className="modal__label">
-        Password*
-        <input
-          className="modal__password"
-          type="text"
-          name="password"
-          placeholder="Password"
-          minLength="1"
-          maxLength="8"
-          required
-          value={password}
-          onChange={handlePasswordChange}
-        ></input>
-      </label>
-      <label className="modal__label">
-        Name
-        <input
-          className="modal__input-name"
-          type="text"
-          name="name"
-          placeholder="Name"
           minLength="1"
           maxLength="30"
-          value={name}
-          onChange={handleNameChange}
-        ></input>
-      </label>
-      <label className="modal__label">
-        Avatar
-        <input
-          className="modal__input-link"
-          type="url"
-          name="avatar"
-          placeholder="Image URL"
-          minLength="1"
-          maxLength="300"
-          value={avatar}
-          onChange={handleUrlChange}
-        ></input>
-      </label>
-      <div className="button-container">
-        <button
-          className="modal__submit-button"
-          type="submit"
-          name="button"
-          onChange={handleSubmit}
-        >
-          Next
-        </button>
-        <button
-          className="modal__form-button"
-          type="button"
-          name="button"
-          onChange={handleLogin}
-          onClick={onClickLogin}
-        >
-          or Log in
-        </button>
+          value={inputValues.email || ""}
+          onChange={handleInputChange}
+          required
+        />
       </div>
+      <span className=""></span>
+      {/* Password input */}
+      <div className="modal__input">
+        <label htmlFor="modal__input-password">Password*</label>
+        <input
+          id="modal__input-password"
+          className="modal__input-form"
+          name="password"
+          type="password"
+          placeholder="Password"
+          minLength="8"
+          maxLength="30"
+          value={inputValues.password || ""}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+      <span className=""></span>
+      {/* Name Input */}
+      <div className="modal__input">
+        <label htmlFor="modal__input-register-name">Name</label>
+        <input
+          id="modal__input-register-name"
+          className="modal__input-form"
+          name="name"
+          type="text"
+          placeholder="Name"
+          value={inputValues.name || ""}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+      <span className=""></span>
+      {/* Image URL Input */}
+      <div className="modal__input">
+        <label htmlFor="modal__input-register-url">Avatar URL</label>
+        <input
+          id="modal__input-register-url"
+          className="modal__input-form"
+          name="avatar"
+          type="url"
+          placeholder="Avatar URL"
+          value={inputValues.avatar || ""}
+          onChange={handleInputChange}
+        />
+      </div>
+      <span className=""></span>
     </ModalWithForm>
   );
 };
