@@ -1,110 +1,110 @@
-export const latitude = 34.055569;
-export const longitude = -117.182541;
+export const latitude = 40.76078;
+export const longitude = -111.891045;
 export const APIkey = `393864ae7bb46428ae703a86fe0dd5d7`;
 export const defaultClothingItems = [
   {
     _id: 0,
-    name: 'Cap',
-    weather: 'hot',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    name: "Cap",
+    weather: "hot",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591",
   },
   {
     _id: 1,
-    name: 'Hoodie',
-    weather: 'warm',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8',
+    name: "Hoodie",
+    weather: "warm",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
   },
   {
     _id: 2,
-    name: 'Jacket',
-    weather: 'cold',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad',
+    name: "Jacket",
+    weather: "cold",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad",
   },
   {
     _id: 3,
-    name: 'Sneakers',
-    weather: 'cold',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f',
+    name: "Sneakers",
+    weather: "cold",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
   },
   {
     _id: 4,
-    name: 'T-Shirt',
-    weather: 'hot',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09',
+    name: "T-Shirt",
+    weather: "hot",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
   },
   {
     _id: 5,
-    name: 'Winter coat',
-    weather: 'cold',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4',
+    name: "Winter coat",
+    weather: "cold",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
 
 export const weatherOptions = [
   {
-    url: require('../images/DaySunny.svg').default,
+    url: require("../images/DaySunny.svg").default,
     day: true,
-    type: 'sunny',
+    type: "sunny",
   },
   {
-    url: require('../images/DaySunny.svg').default,
+    url: require("../images/DaySunny.svg").default,
     day: true,
-    type: 'clear',
+    type: "clear",
   },
   {
-    url: require('../images/DayStorm.svg').default,
+    url: require("../images/DayStorm.svg").default,
     day: true,
-    type: 'storm',
+    type: "storm",
   },
   {
-    url: require('../images/DaySnow.svg').default,
+    url: require("../images/DaySnow.svg").default,
     day: true,
-    type: 'snow',
+    type: "snow",
   },
   {
-    url: require('../images/DayRain.svg').default,
+    url: require("../images/DayRain.svg").default,
     day: true,
-    type: 'rain',
+    type: "rain",
   },
   {
-    url: require('../images/DayFog.svg').default,
+    url: require("../images/DayFog.svg").default,
     day: true,
-    type: 'fog',
+    type: "fog",
   },
   {
-    url: require('../images/DayCloudy.svg').default,
+    url: require("../images/DayCloudy.svg").default,
     day: true,
-    type: 'clouds',
+    type: "clouds",
   },
   {
-    url: require('../images/NightSunny.svg').default,
+    url: require("../images/NightSunny.svg").default,
     day: false,
-    type: 'clear',
+    type: "clear",
   },
   {
-    url: require('../images/NightStorm.svg').default,
+    url: require("../images/NightStorm.svg").default,
     day: false,
-    type: 'storm',
+    type: "storm",
   },
   {
-    url: require('../images/NightSnow.svg').default,
+    url: require("../images/NightSnow.svg").default,
     day: false,
-    type: 'snow',
+    type: "snow",
   },
   {
-    url: require('../images/NightRain.svg').default,
+    url: require("../images/NightRain.svg").default,
     day: false,
-    type: 'rain',
+    type: "rain",
   },
   {
-    url: require('../images/NightFog.svg').default,
+    url: require("../images/NightFog.svg").default,
     day: false,
-    type: 'fog',
+    type: "fog",
   },
   {
-    url: require('../images/NightCloudy.svg').default,
+    url: require("../images/NightCloudy.svg").default,
     day: false,
-    type: 'clouds',
+    type: "clouds",
   },
 ];
 
@@ -116,12 +116,12 @@ export const responseEx = {
   weather: [
     {
       id: 501,
-      main: 'Rain',
-      description: 'moderate rain',
-      icon: '10d',
+      main: "Rain",
+      description: "moderate rain",
+      icon: "10d",
     },
   ],
-  base: 'stations',
+  base: "stations",
   main: {
     temp: 298.48,
     feels_like: 298.74,
@@ -139,7 +139,7 @@ export const responseEx = {
     gust: 1.18,
   },
   rain: {
-    '1h': 3.16,
+    "1h": 3.16,
   },
   clouds: {
     all: 100,
@@ -148,12 +148,12 @@ export const responseEx = {
   sys: {
     type: 2,
     id: 2075663,
-    country: 'IT',
+    country: "IT",
     sunrise: 1661834187,
     sunset: 1661882248,
   },
   timezone: 7200,
   id: 3163858,
-  name: 'Zocca',
+  name: "Zocca",
   cod: 200,
 };
