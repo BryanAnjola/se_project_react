@@ -1,16 +1,16 @@
-import { useContext } from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import './ItemCard.css';
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "./ItemCard.css";
 
 const ItemCard = ({ data, onSelectCard, onCardLike, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   const isLiked = data.likes.some((likes) => likes === currentUser._id);
 
-  const itemLikeButtonClassname = () => {
+  const itemLikeButtons = () => {
     return isLiked
-      ? 'clothing__card-like-button-active'
-      : 'clothing__card-like-button-inactive';
+      ? "clothing__card-like-button-active"
+      : "clothing__card-like-button-inactive";
   };
 
   return (
@@ -24,7 +24,7 @@ const ItemCard = ({ data, onSelectCard, onCardLike, isLoggedIn }) => {
           {isLoggedIn && (
             <button
               type="button"
-              className={itemLikeButtonClassname()}
+              className={itemLikeButtons()}
               onClick={() => {
                 onCardLike(data, isLiked);
               }}

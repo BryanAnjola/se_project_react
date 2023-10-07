@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
-import './Main.css';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import ItemCard from '../ItemCard/ItemCard';
+import React, { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import "./Main.css";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
 
 function Main({
   weatherTemp,
@@ -14,25 +14,24 @@ function Main({
   onCardLike,
   isLoggedIn,
 }) {
-  const { currentUser } = useContext(CurrentUserContext);
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
   const weatherFilter = () => {
-    if (temp >= 30 && currentTemperatureUnit === 'C') {
-      return 'hot';
+    if (temp >= 30 && currentTemperatureUnit === "C") {
+      return "hot";
     } else if (temp >= 19 && temp <= 29) {
-      return 'warm';
+      return "warm";
     } else if (temp <= 18) {
-      return 'cold';
+      return "cold";
     }
 
-    if (temp >= 86 && currentTemperatureUnit === 'F') {
-      return 'hot';
+    if (temp >= 86 && currentTemperatureUnit === "F") {
+      return "hot";
     } else if (temp >= 66 && temp <= 85) {
-      return 'warm';
+      return "warm";
     } else if (temp <= 65) {
-      return 'cold';
+      return "cold";
     }
   };
   const weatherTempFilter = weatherFilter();
@@ -58,7 +57,6 @@ function Main({
               onSelectCard={onSelectCard}
               onCardLike={onCardLike}
               isLoggedIn={isLoggedIn}
-              currentUser={currentUser}
             />
           );
         })}
