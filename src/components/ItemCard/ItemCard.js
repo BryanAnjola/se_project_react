@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import "./ItemCard.css";
+import "./itemCard.css";
 
 const ItemCard = ({ data, onSelectCard, onCardLike, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);

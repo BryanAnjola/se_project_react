@@ -13,7 +13,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { deleteItems, getItems, postItems } from "../../utils/api";
+import { deleteItems, getItems, postItems } from "../../utils/Api";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 
