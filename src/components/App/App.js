@@ -169,12 +169,12 @@ function App() {
       });
   };
 
-  // Form Validator
-  const [validate, setValidate] = useState("");
+  // // Form Validator
+  // const [validate, setValidate] = useState("");
 
-  const handleValidation = (e) => {
-    console.log(e.target.value);
-  };
+  // const handleValidation = (e) => {
+  //   console.log(e.target.value);
+  // };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
