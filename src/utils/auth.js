@@ -1,6 +1,6 @@
 import { checkResponse } from "./weatherApi";
 
-const newBaseUrl = "http://localhost:3001";
+const newBaseUrl = "api.bawtrr.crabdance.com";
 function getToken() {
   return localStorage.getItem("jwt");
 }
