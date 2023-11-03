@@ -1,6 +1,9 @@
 import { checkResponse } from "./weatherApi";
 
-const newBaseUrl = "api.bawtrr.crabdance.com";
+const newBaseUrl =
+  process.env.NODE_ENV === "production"
+    ? "api.bawtrr.crabdance.com"
+    : "http://localhost:3001";
 
 function getToken() {
   return localStorage.getItem("jwt");
